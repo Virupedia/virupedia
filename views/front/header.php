@@ -81,7 +81,7 @@
 
                                  <a href="#">Products</a>
                                  <ul class="dropdown">
-                                     <li><a href="#">Product's List</a></li>
+                                     <li><a href="products.php">Product's List</a></li>
                                  </ul>
                              </li>
 
