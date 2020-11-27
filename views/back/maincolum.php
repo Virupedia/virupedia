@@ -66,6 +66,69 @@
              </div>
          </li>
 
+         <!--clients add page -->
+         <!-- Nav Item - Utilities Collapse Menu -->
+         <li class="nav-item">
+             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseClients" aria-expanded="true" aria-controls="collapseClients">
+                 <i class=""></i>
+                 <span>Clients</span>
+             </a>
+             <div id="collapseClients" class="collapse" aria-labelledby="headingClients" data-parent="#accordionSidebar">
+                 <div class="bg-white py-2 collapse-inner rounded">
+                     <h6 class="collapse-header">Custom Clients:</h6>
+                     <a class="collapse-item" href="Clients-color.html">Consulter Clients</a>
+                     <a class="collapse-item" href="Clients-border.html">Consulter suggestions</a>
+                     <a class="collapse-item" href="Clients-animation.html">Statistiques Client</a>
+                 </div>
+             </div>
+         </li>
+
+         <!--clients add page ends -->
+
+         <!--produits add page -->
+         <!-- Nav Item - Utilities Collapse Menu -->
+         <li class="nav-item">
+             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseproduits" aria-expanded="true" aria-controls="collapseproduits">
+                 <i class=""></i>
+                 <span>produits</span>
+             </a>
+             <div id="collapseproduits" class="collapse" aria-labelledby="headingproduits" data-parent="#accordionSidebar">
+                 <div class="bg-white py-2 collapse-inner rounded">
+                     <h6 class="collapse-header">Custom produits:</h6>
+                     <a class="collapse-item" href="produits-color.html">Ajouter produit</a>
+                     <a class="collapse-item" href="produits-border.html">Consulter produit</a>
+                     <a class="collapse-item" href="produits-animation.html">Ajouter Categorie</a>
+                     <a class="collapse-item" href="produits-animation.html">Consulter Categorie</a>
+
+                 </div>
+             </div>
+         </li>
+
+         <!--produits add page ends -->
+
+         <!--Blogs add page -->
+         <!-- Nav Item - Utilities Collapse Menu -->
+         <li class="nav-item">
+             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBlogs" aria-expanded="true" aria-controls="collapseBlogs">
+                 <i class=""></i>
+                 <span>Blogs</span>
+             </a>
+             <div id="collapseBlogs" class="collapse" aria-labelledby="headingBlogs" data-parent="#accordionSidebar">
+                 <div class="bg-white py-2 collapse-inner rounded">
+                     <h6 class="collapse-header">Custom Blogs:</h6>
+                     <a class="collapse-item" href="Blogs-color.html">Ajouter Article</a>
+                     <a class="collapse-item" href="Blogs-border.html">Editer Article</a>
+                     <a class="collapse-item" href="Blogs-animation.html">Consulter commentaires</a>
+                     <a class="collapse-item" href="Blogs-animation.html">Statistiques</a>
+                     <a class="collapse-item" href="Blogs-animation.html">Envoyer Mail</a>
+
+                 </div>
+             </div>
+         </li>
+
+         <!--blogs add page ends -->
+
+
          <!-- Divider -->
          <hr class="sidebar-divider">
 
