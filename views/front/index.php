@@ -47,7 +47,7 @@
                 </div>
               </div>
 
-              <p><a href="#" class="btn btn-primary px-5 py-3">Shop Now</a></p>
+              <p><a href="shop.php" class="btn btn-primary px-5 py-3">Shop Now</a></p>
             </div>
           </div>
         </div>
