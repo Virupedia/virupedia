@@ -116,7 +116,7 @@
              <div id="collapseBlogs" class="collapse" aria-labelledby="headingBlogs" data-parent="#accordionSidebar">
                  <div class="bg-white py-2 collapse-inner rounded">
                      <h6 class="collapse-header">Custom Blogs:</h6>
-                     <a class="collapse-item" href="Blogs-color.html">Ajouter Article</a>
+                     <a class="collapse-item" href="AjouterArticle.php">Ajouter Article</a>
                      <a class="collapse-item" href="Blogs-border.html">Editer Article</a>
                      <a class="collapse-item" href="Blogs-animation.html">Consulter commentaires</a>
                      <a class="collapse-item" href="Blogs-animation.html">Statistiques</a>
