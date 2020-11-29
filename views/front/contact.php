@@ -1,7 +1,7 @@
-<?php require_once 'header.php';
+<?php require_once 'header_main.php';
 ?>
 <!-- header -->
-<?php require_once 'header_main.php'; ?>
+<?php require_once 'header.php'; ?>
 <!-- //header -->
 
 <!DOCTYPE html>

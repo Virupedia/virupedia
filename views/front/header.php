@@ -5,14 +5,14 @@
         $validURL = str_replace("&", "&amp", $url);
         return $validURL;
     }
-    echo " Page url is : " . current_url();
+    // echo " Page url is : " . current_url();
     $newstring = current_url();
     $pos = strrpos($newstring, '/', 26);
-    echo " Pose est : " . $pos;
+    // echo " Pose est : " . $pos;
 
     $fstring = substr($newstring, $pos + 1, 12);
 
-    echo " la page name est : " . $fstring;
+    // echo " la page name est : " . $fstring;
 
     ?>
 
