@@ -25,11 +25,10 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <!-- main colum -->
-
-        <?php require_once 'maincolum.php';
+        <!--begin sidebar-->
+        <?php require_once 'sidebar.php';
         ?>
-        <!-- //main colum -->
+        <!--end of  sidebar -->
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -38,11 +37,10 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <!-- header -->
-
-                <?php require_once 'header.php';
+                <!--begin topbar -->
+                <?php require_once 'topbar.php';
                 ?>
-                <!-- //header -->
+                <!--end of  topbar -->
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->

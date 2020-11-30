@@ -35,7 +35,7 @@
          </div>
 
          <!-- Nav Item - Pages Collapse Menu -->
-         <li class="nav-item">
+         <!--   <li class="nav-item">
              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                  <i class="fas fa-fw fa-cog"></i>
                  <span>Components</span>
@@ -47,10 +47,10 @@
                      <a class="collapse-item" href="cards.html">Cards</a>
                  </div>
              </div>
-         </li>
+         </li> -->
 
          <!-- Nav Item - Utilities Collapse Menu -->
-         <li class="nav-item">
+         <!--  <li class="nav-item">
              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                  <i class="fas fa-fw fa-wrench"></i>
                  <span>Utilities</span>
@@ -64,10 +64,10 @@
                      <a class="collapse-item" href="utilities-other.html">Other</a>
                  </div>
              </div>
-         </li>
+         </li> -->
 
          <!--clients add page -->
-         <!-- Nav Item - Utilities Collapse Menu -->
+         <!-- Nav Item - Clients Menu -->
          <li class="nav-item">
              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseClients" aria-expanded="true" aria-controls="collapseClients">
                  <i class=""></i>
@@ -76,9 +76,9 @@
              <div id="collapseClients" class="collapse" aria-labelledby="headingClients" data-parent="#accordionSidebar">
                  <div class="bg-white py-2 collapse-inner rounded">
                      <h6 class="collapse-header">Custom Clients:</h6>
-                     <a class="collapse-item" href="Clients-color.html">Consulter Clients</a>
-                     <a class="collapse-item" href="Clients-border.html">Consulter suggestions</a>
-                     <a class="collapse-item" href="Clients-animation.html">Statistiques Client</a>
+                     <a class="collapse-item" href="Consulterclient.php">Consulter Clients</a>
+                     <a class="collapse-item" href="Consultersuggestions.php">Consulter suggestions</a>
+                     <a class="collapse-item" href="StatistiquesClient.php">Statistiques Client</a>
                  </div>
              </div>
          </li>
@@ -117,10 +117,10 @@
                  <div class="bg-white py-2 collapse-inner rounded">
                      <h6 class="collapse-header">Custom Blogs:</h6>
                      <a class="collapse-item" href="AjouterArticle.php">Ajouter Article</a>
-                     <a class="collapse-item" href="Blogs-border.html">Editer Article</a>
-                     <a class="collapse-item" href="Blogs-animation.html">Consulter commentaires</a>
-                     <a class="collapse-item" href="Blogs-animation.html">Statistiques</a>
-                     <a class="collapse-item" href="Blogs-animation.html">Envoyer Mail</a>
+                     <a class="collapse-item" href="editerarticle.php">Editer Article</a>
+                     <a class="collapse-item" href="consultercommentaires.php">Consulter commentaires</a>
+                     <a class="collapse-item" href="statistiquesarticles.php">Statistiques</a>
+                     <a class="collapse-item" href="envoyermail.php">Envoyer Mail</a>
 
                  </div>
              </div>
@@ -149,12 +149,12 @@
                      <a class="collapse-item" href="login.html">Login</a>
                      <a class="collapse-item" href="register.php">Register</a>
                      <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                     <div class="collapse-divider"></div>
+                     <!-- <div class="collapse-divider"></div>
                      <h6 class="collapse-header">Other Pages:</h6>
                      <a class="collapse-item" href="404.html"> Blogs</a>
                      <a class="collapse-item" href="blank.html">Events</a>
                      <a class="collapse-item" href="blank.html">Users</a>
-                     <a class="collapse-item" href="blank.html">Delivery</a>
+                     <a class="collapse-item" href="blank.html">Delivery</a> -->
 
 
                  </div>
@@ -162,18 +162,18 @@
          </li>
 
          <!-- Nav Item - Charts -->
-         <li class="nav-item">
+         <!--  <li class="nav-item">
              <a class="nav-link" href="charts.php">
                  <i class="fas fa-fw fa-chart-area"></i>
                  <span>Charts</span></a>
-         </li>
+         </li> -->
 
          <!-- Nav Item - Tables -->
-         <li class="nav-item">
+         <!-- <li class="nav-item">
              <a class="nav-link" href="tables.php">
                  <i class="fas fa-fw fa-table"></i>
                  <span>Tables</span></a>
-         </li>
+         </li> -->
 
          <!-- Divider -->
          <hr class="sidebar-divider d-none d-md-block">
