@@ -66,8 +66,9 @@
              </div>
          </li> -->
 
-         <!--clients add page -->
-         <!-- Nav Item - Clients Menu -->
+
+         <!--Go Gestion Clients.php-->
+
          <li class="nav-item">
              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseClients" aria-expanded="true" aria-controls="collapseClients">
                  <i class=""></i>
@@ -82,11 +83,9 @@
                  </div>
              </div>
          </li>
+         <!--//Go Gestion Clients.php-->
 
-         <!--clients add page ends -->
-
-         <!--produits add page -->
-         <!-- Nav Item - Utilities Collapse Menu -->
+         <!--Go Gestion Produits.php-->
          <li class="nav-item">
              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseproduits" aria-expanded="true" aria-controls="collapseproduits">
                  <i class=""></i>
@@ -103,11 +102,27 @@
                  </div>
              </div>
          </li>
+         <!--//Go Gestion Produits.php-->
 
-         <!--produits add page ends -->
 
-         <!--Blogs add page -->
-         <!-- Nav Item - Utilities Collapse Menu -->
+         <!--Go Gestion Commande.php-->
+
+         <li class="nav-item">
+             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCommande" aria-expanded="true" aria-controls="collapseCommande">
+                 <i class=""></i>
+                 <span>Commande</span>
+             </a>
+             <div id="collapseCommande" class="collapse" aria-labelledby="headingCommande" data-parent="#accordionSidebar">
+                 <div class="bg-white py-2 collapse-inner rounded">
+                     <h6 class="collapse-header">Custom Commande:</h6>
+                     <a class="collapse-item" href="afficherCommandeB.php">Consulter Commandes</a>
+                 </div>
+             </div>
+         </li>
+
+         <!--//Go Gestion Commande.php-->
+
+         <!--Go Gestion blog.php-->
          <li class="nav-item">
              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBlogs" aria-expanded="true" aria-controls="collapseBlogs">
                  <i class=""></i>
@@ -126,7 +141,7 @@
              </div>
          </li>
 
-         <!--blogs add page ends -->
+         <!--//Go Gestion blog.php-->
 
 
          <!-- Divider -->
