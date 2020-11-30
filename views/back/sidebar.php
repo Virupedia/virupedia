@@ -94,10 +94,10 @@
              <div id="collapseproduits" class="collapse" aria-labelledby="headingproduits" data-parent="#accordionSidebar">
                  <div class="bg-white py-2 collapse-inner rounded">
                      <h6 class="collapse-header">Custom produits:</h6>
-                     <a class="collapse-item" href="produits-color.html">Ajouter produit</a>
-                     <a class="collapse-item" href="produits-border.html">Consulter produit</a>
-                     <a class="collapse-item" href="produits-animation.html">Ajouter Categorie</a>
-                     <a class="collapse-item" href="produits-animation.html">Consulter Categorie</a>
+                     <a class="collapse-item" href="Ajouterproduit.php">Ajouter produit</a>
+                     <a class="collapse-item" href="Consulterproduit.php">Consulter produit</a>
+                     <a class="collapse-item" href="AjouterproduitCategorie.php">Ajouter Categorie</a>
+                     <a class="collapse-item" href="ConsulterproduitCategorie.php">Consulter Categorie</a>
 
                  </div>
              </div>
@@ -121,6 +121,32 @@
          </li>
 
          <!--//Go Gestion Commande.php-->
+
+
+
+         <!--Go Gestion Livraison.php-->
+
+         <li class="nav-item">
+             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLivraison" aria-expanded="true" aria-controls="collapseLivraison">
+                 <i class=""></i>
+                 <span>Livraison</span>
+             </a>
+             <div id="collapseLivraison" class="collapse" aria-labelledby="headingLivraison" data-parent="#accordionSidebar">
+                 <div class="bg-white py-2 collapse-inner rounded">
+                     <h6 class="collapse-header">Custom Livraison:</h6>
+                     <a class="collapse-item" href="gererLivraison.php">Consulter Livraison</a>
+                     <a class="collapse-item" href="gererlivreur.php">gerer Livreur</a>
+
+                 </div>
+             </div>
+         </li>
+
+         <!--//Go Gestion Livraison.php-->
+
+
+
+
+
 
          <!--Go Gestion blog.php-->
          <li class="nav-item">
