@@ -5,14 +5,14 @@
         $validURL = str_replace("&", "&amp", $url);
         return $validURL;
     }
-    echo " Page url is : " . current_url();
+    // echo " Page url is : " . current_url();
     $newstring = current_url();
     $pos = strrpos($newstring, '/', 26);
-    echo " Pose est : " . $pos;
+    // echo " Pose est : " . $pos;
 
     $fstring = substr($newstring, $pos + 1, 12);
 
-    echo " la page name est : " . $fstring;
+    // echo " la page name est : " . $fstring;
 
     ?>
 
@@ -87,6 +87,7 @@
 
                              <li <?php if (strcmp($fstring, "blogs.php")) { ?> class="desactive" <?php  } else { ?> class="active" <?php  } ?>><a href="blogs.php">Blogs</a></li>
                              <li <?php if (strcmp($fstring, "events.php")) { ?> class="desactive" <?php  } else { ?> class="active" <?php  } ?>><a href="events.php">Events</a></li>
+                             <li <?php if (strcmp($fstring, "suggestion.php")) { ?> class="desactive" <?php  } else { ?> class="active" <?php  } ?>><a href="suggestion.php">suggestion</a></li>
                              <li <?php if (strcmp($fstring, "about.php")) { ?> class="desactive" <?php  } else { ?> class="active" <?php  } ?>><a href="about.php">About</a></li>
                              <li <?php if (strcmp($fstring, "contact.php")) { ?> class="desactive" <?php  } else { ?> class="active" <?php  } ?>><a href="contact.php">Contact</a></li>
 
