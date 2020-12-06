@@ -1,15 +1,29 @@
+<?php require_once "../../controller/ajouterArticle.php" ?>
+<?php
+session_start();
+// Page was not reloaded via a button press
+if (!isset($_POST['add1'])) {
+    $_SESSION['attnum1'] = 0; // Reset counter
+}
+if (!isset($_POST['add2'])) {
+    $_SESSION['attnum2'] = 0; // Reset counter
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
 
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>EditerArticle</title>
+    <title>Edite article</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -25,10 +39,8 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <!--begin sidebar-->
         <?php require_once 'sidebar.php';
         ?>
-        <!--end of  sidebar -->
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -36,15 +48,103 @@
             <!-- Main Content -->
             <div id="content">
 
-                <!--begin topbar -->
                 <?php require_once 'topbar.php';
                 ?>
-                <!--end of  topbar -->
 
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <div> Hello world</div>
+                    <div>
+                        <?PHP
+                        $articleC = new articleC();
+                        if ($_SESSION['attnum1'] > $_SESSION['attnum2']) {
+
+                            $listearticle = $articleC->sortdate1();
+                        } else if ($_SESSION['attnum1'] < $_SESSION['attnum2']) {
+                            $listearticle = $articleC->sortdate2();
+                        } else {
+                            $listearticle = $articleC->afficherarticle();
+                        }
+
+                        ?>
+                        <!--  <table border=1 align='center'>
+                            <tr>
+                                <th>Id</th>
+                                <th>titre</th>
+                                <th>texte</th>
+                                <th>auteur</th>
+                                <th>source</th>
+                                <th>urlImage</th>
+                                <th>notifcreateur</th>
+                            </tr>  -->
+
+
+
+
+
+
+
+
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Titre</th>
+                                    <th scope="col">Texte</th>
+                                    <th scope="col">Auteur</th>
+                                    <th scope="col">Source</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Notification</th>
+                                    <th scope="col">Datearticle</th>
+                                    <th>
+                                        <form method='post'>
+                                            <input name='add1' type="submit" value='OrderAsc' class="btn btn-success">
+                                            <?php $_SESSION['attnum1']++; ?>
+                                        </form>
+                                    </th>
+                                    <th>
+                                        <form method='post'>
+                                            <input name='add2' type="submit" value='OrderDesc' class="btn btn-success">
+                                            <?php $_SESSION['attnum2']++; ?>
+                                        </form>
+                                    </th>
+                                </tr>
+                            </thead>
+
+
+
+                            <?PHP
+
+
+                            foreach ($listearticle as $row) {
+                            ?>
+                                <tr class="table-primary">
+                                    <td><?PHP echo $row['idNewsArticle']; ?></td>
+                                    <td><?PHP echo $row['titre']; ?></td>
+                                    <td><?PHP echo $row['texte']; ?></td>
+                                    <td><?PHP echo $row['auteur']; ?></td>
+                                    <td><?PHP echo $row['source']; ?></td>
+                                    <td><img width="100" src="../front/images/<?PHP echo $row['urlImage']; ?> "> </td>
+                                    <td><?PHP echo $row['notifCreateur']; ?></td>
+                                    <td><?PHP echo $row['Datearticle']; ?></td>
+
+                                    <td>
+                                        <form method="POST" action="../../controller/supprimerarticle.php">
+                                            <input type="submit" name="supprimer" value="supprimer" class="btn btn-danger">
+                                            <input type="hidden" value=<?PHP echo $row['idNewsArticle']; ?> name="idNewsArticle">
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-primary" href="modifierarticles.php?idNewsArticle=<?PHP echo $row['idNewsArticle']; ?>">Modifier </a>
+                                    </td>
+                                </tr>
+                            <?PHP
+                            }
+
+                            ?>
+                        </table>
+
+                    </div>
 
                 </div>
                 <!-- /.container-fluid -->
