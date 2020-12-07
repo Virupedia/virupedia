@@ -10,16 +10,6 @@ class Utilisateur
     private ?string $Password = null;
 
 
-    function __construct(string $nameUsers, string $lastnameUsers, string $address, string $Login, string $Cin, string $Password)
-    {
-
-        $this->nameUsers = $nameUsers;
-        $this->lastnameUsers = $lastnameUsers;
-        $this->address = $address;
-        $this->Login = $Login;
-        $this->Cin = $Cin;
-        $this->Password = $Password;
-    }
 
     function getId(): int
     {
@@ -72,6 +62,17 @@ class Utilisateur
     }
     function setPassword(string $Password): void
     {
+        $this->Password = $Password;
+    }
+    
+    function __construct(string $nameUsers, string $lastnameUsers, string $address, string $Login, string $Cin, string $Password)
+    {
+
+        $this->nameUsers = $nameUsers;
+        $this->lastnameUsers = $lastnameUsers;
+        $this->address = $address;
+        $this->Login = $Login;
+        $this->Cin = $Cin;
         $this->Password = $Password;
     }
 }
