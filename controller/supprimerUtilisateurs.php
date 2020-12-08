@@ -1,5 +1,5 @@
 <?PHP
-include "userC.php";
+include "C://xampp/htdocs/Virupedia/virupedia/controller/userC.php";
 
 $Utilisateur = new UtilisateurC();
 
