@@ -1,5 +1,4 @@
-<?php require_once "C://xampp/htdocs/testprojetweb/controller/userC.php" ?>
-
+<?php require_once "C://xampp/htdocs/Virupedia/virupedia/controller/userC.php" ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - 404</title>
+    <title> SB Admin 2 - 404 </title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
