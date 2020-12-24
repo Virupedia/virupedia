@@ -1,3 +1,5 @@
+<?php require_once "C://xampp/htdocs/Virupedia/virupedia/controller/userC.php" ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>ConsulterClient</title>
+    <title> SB Admin 2 - 404 </title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -25,10 +27,8 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <!--begin sidebar-->
         <?php require_once 'sidebar.php';
         ?>
-        <!--end of  sidebar -->
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -36,15 +36,59 @@
             <!-- Main Content -->
             <div id="content">
 
-                <!--begin topbar -->
                 <?php require_once 'topbar.php';
                 ?>
-                <!--end of  topbar -->
 
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <div> Hello world</div>
+                    <div>
+                        <?PHP
+
+                        $utilisateurC = new UtilisateurC();
+                        $listeUsers = $utilisateurC->afficherUtilisateurs();
+                        ?>
+                        <table border=1 align='center'>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nom</th>
+                                <th>Prenom</th>
+                                <th>Adress</th>
+                                <th>Login</th>
+                                <th>Cin</th>
+                                <th>Password</th>
+                                <th>supprimer</th>
+                                <th>modifier</th>
+                            </tr>
+
+                            <?PHP
+                            foreach ($listeUsers as $user) {
+                            ?>
+                                <tr>
+                                    <td><?PHP echo $user['idUsers']; ?></td>
+                                    <td><?PHP echo $user['nameUsers']; ?></td>
+                                    <td><?PHP echo $user['lastnameUsers']; ?></td>
+                                    <td><?PHP echo $user['address']; ?></td>
+                                    <td><?PHP echo $user['Login']; ?></td>
+                                    <td><?PHP echo $user['Cin']; ?></td>
+                                    <td><?PHP echo $user['Password']; ?></td>
+
+                                    <td>
+                                        <form method="POST" action="../../controller/supprimerUtilisateurs.php">
+                                            <input type="submit" name="supprimer" value="supprimer">
+                                            <input type="hidden" value=<?PHP echo $user['idUsers']; ?> name="id">
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <a href="modifierUtilisateur.php?idUsers=<?PHP echo $user['idUsers']; ?>"> Modifier </a>
+                                    </td>
+                                </tr>
+                            <?PHP
+                            }
+                            ?>
+                        </table>
+
+                    </div>
 
                 </div>
                 <!-- /.container-fluid -->
