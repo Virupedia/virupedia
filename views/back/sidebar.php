@@ -1,5 +1,5 @@
-     <!-- Custom fonts for this template-->
-     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+          <!-- Custom fonts for this template-->
+          <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
      <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
      
      <!-- Custom styles for this template-->
@@ -10,11 +10,13 @@
 
          <!-- Sidebar - Brand -->
          <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-             <div class="sidebar-brand-icon rotate-n-15">
-                 <i class="fas fa-laugh-wink"></i>
+             <div class="sidebar-brand-icon ">
+             <i class="table-img">
+                                                    <img width="67" src="../front/images/logo.png "> </i>
              </div>
-             <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+             <div class="sidebar-brand-text mx-3">Admin Virupedia</div>
          </a>
+
 
          <!-- Divider -->
          <hr class="sidebar-divider my-0">
@@ -134,8 +136,10 @@
              <div id="collapseLivraison" class="collapse" aria-labelledby="headingLivraison" data-parent="#accordionSidebar">
                  <div class="bg-white py-2 collapse-inner rounded">
                      <h6 class="collapse-header">Custom Livraison:</h6>
-                     <a class="collapse-item" href="gererLivraison.php">Consulter Livraison</a>
-                     <a class="collapse-item" href="gererlivreur.php">gerer Livreur</a>
+                     <a class="collapse-item" href="AjouterLivraison.php">Ajouter Livraison</a>
+                     <a class="collapse-item" href="ModifierLivraison.php">Editer Livraison</a>
+                     <a class="collapse-item" href="AjouterLivreur.php">Ajouter Livreur</a>
+                     <a class="collapse-item" href="ModifierLivreur.php">Editer Livreur</a>
 
                  </div>
              </div>
