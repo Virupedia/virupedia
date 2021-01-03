@@ -1,6 +1,6 @@
 <?php
 
-include "C://wamp64/www/Virupedia/virupedia/Config.php";
+include_once "C://xampp/htdocs/virupedia/config.php";
 
 
 class Livreurr
@@ -17,7 +17,7 @@ class Livreurr
 
     public function ajouterLivreur($livreur)
     {
-        $sql = 'INSERT INTO virupedia.users(nameUsers,lastnameUsers,address,Login,Cin,Password,ImageUsers,role,nblivraison)VALUES(:nom_livreur,:prenom_livreur,:Address_livreur,:login_livreur,:Cin_livreur,:Password_livreur,:ImageUsers_livreur,:role_livreur,:nblivraison_livreur)';
+        $sql = 'INSERT INTO virupedia.users(nameUsers,lastnameUsers,address,Login,Cin,Password,ImageUsers,role)VALUES(:nom_livreur,:prenom_livreur,:Address_livreur,:login_livreur,:Cin_livreur,:Password_livreur,:ImageUsers_livreur,:role_livreur)';
         $db = config::getConnexion();
         try {
             $query = $db->prepare($sql);
@@ -30,8 +30,7 @@ class Livreurr
                 'Cin_livreur' => $livreur->getCin_livreur(),
                 'Password_livreur' => $livreur->getPassword_livreur(),
                 'ImageUsers_livreur' => $livreur->getImageUsers_livreur(),
-                'role_livreur' => $livreur->getrole_livreur(),
-                'nblivraison_livreur' => $livreur->getnblivraison_livreur()
+                'role_livreur' => $livreur->getrole_livreur()
             ]);
         } catch (Exception $e) {
             echo 'Erreur: ' . $e->getMessage();
@@ -51,7 +50,7 @@ class Livreurr
         }
     }
 
-    
+
     public function modifierlivreur($livreur, $id)
     {
         try {
@@ -87,12 +86,6 @@ class Livreurr
         } catch (PDOException $e) {
             $e->getMessage();
         }
-        
-
-
-
-
-
     }
 
     function recupererlivreur($id)
@@ -114,77 +107,72 @@ class Livreurr
 
     function trier($par)
     {
-        $sql="SELECT * FROM virupedia.users order by $par ";
+        $sql = "SELECT * FROM virupedia.users order by $par ";
 
         //global $db;
-        $db =Config::getConnexion();
+        $db = Config::getConnexion();
 
-        try{
-            $result=$db->query($sql);
+        try {
+            $result = $db->query($sql);
 
             return $result;
-
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
         }
-        catch (Exception $e){
-            die('Erreur: '.$e->getMessage());
+    }
+
+
+    function recherche($search_value)
+    {
+        $sql = "SELECT * FROM virupedia.users where  idUsers like '$search_value' or nameUsers like '%$search_value%' or lastnameUsers like '%$search_value%' or address like '%$search_value%' or Login like '%$search_value%'or Cin like '%$search_value%' or Password like '%$search_value%'or ImageUsers like '%$search_value%'or Role like '%$search_value%'";
+
+        //global $db;
+        $db = Config::getConnexion();
+
+        try {
+            $result = $db->query($sql);
+
+            return $result;
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
         }
+    }
+
+    function AffecterLivreurLivraison($idLivreur, $idLivraison)
+    {
+        //$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
+        $sql = "UPDATE virupedia.livraison set idUsers=:idUsers WHERE idLivraison=:idLivraison";
+        $db = Config::getConnexion();
+        try {
+            $req = $db->prepare($sql);
+
+
+
+
+            $req->bindValue(':idUsers', $idLivreur);
+
+            $req->bindValue(':idLivraison', $idLivraison);
+
+            $req->execute();
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
         }
-
-
-        function recherche($search_value)
-        {
-            $sql="SELECT * FROM virupedia.users where  idUsers like '$search_value' or nameUsers like '%$search_value%' or lastnameUsers like '%$search_value%' or address like '%$search_value%' or Login like '%$search_value%'or Cin like '%$search_value%' or Password like '%$search_value%'or ImageUsers like '%$search_value%'or Role like '%$search_value%'";
-    
-            //global $db;
-            $db =Config::getConnexion();
-    
-            try{
-                $result=$db->query($sql);
-    
-                return $result;
-    
-            }
-            catch (Exception $e){
-                die('Erreur: '.$e->getMessage());
-            }
-        }
-        
-        function AffecterLivreurLivraison($idLivreur,$idLivraison){
-            //$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
-           $sql="UPDATE virupedia.livraison set idUsers=:idUsers WHERE idLivraison=:idLivraison";        
-           $db =Config::getConnexion();
-            try{
-                $req=$db->prepare($sql);
-         
-              
-    
-    
-                $req->bindValue(':idUsers',$idLivreur);
-                
-                $req->bindValue(':idLivraison',$idLivraison);
-                
-                $req->execute();
-            }
-            catch (Exception $e){
-                die('Erreur: '.$e->getMessage());
-            }
-        }
-    
+    }
 
 
 
-        function verifierLogin($login,$password )
-		{
-			$db = config::getConnexion();
-			$sql = 'SELECT COUNT(*) AS count,Login,Password FROM virupedia.users WHERE Login = :login AND Password = :password  LIMIT 1';
-			$req = $db->prepare($sql);
-			$req->bindValue(':login',$login);
-			$req->bindValue(':password',$password);
-			$req->execute();
-			$result = $req->fetch(PDO::FETCH_OBJ);
-			return $result;
-        }
-        
+
+    function verifierLogin($login, $password)
+    {
+        $db = config::getConnexion();
+        $sql = 'SELECT COUNT(*) AS count,Login,Password FROM virupedia.users WHERE Login = :login AND Password = :password  LIMIT 1';
+        $req = $db->prepare($sql);
+        $req->bindValue(':login', $login);
+        $req->bindValue(':password', $password);
+        $req->execute();
+        $result = $req->fetch(PDO::FETCH_OBJ);
+        return $result;
+    }
 
 
 
@@ -193,7 +181,8 @@ class Livreurr
 
 
 
-        public function AfficherLivreurPaginer($page, $perPage)
+
+    public function AfficherLivreurPaginer($page, $perPage)
     {
         $start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
         $sql = "SELECT * FROM virupedia.users LIMIT {$start},{$perPage}";
@@ -224,38 +213,34 @@ class Livreurr
         }
     }
 
-    function getnbLivraison($idLivreur){
-        $sql="SElECT nblivraison From virupedia.users where idUsers=$idLivreur";
-        $db =Config::getConnexion();
-        try{
-            $nb=$db->query($sql);
+    function getnbLivraison($idLivreur)
+    {
+        $sql = "SElECT nblivraison From virupedia.users where idUsers=$idLivreur";
+        $db = Config::getConnexion();
+        try {
+            $nb = $db->query($sql);
             return $nb;
-        }
-        catch (Exception $e){
-            die('Erreur: '.$e->getMessage());
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
         }
     }
-   function Livreur_INC_nblivraison($idLivreur,$nb){
+    function Livreur_INC_nblivraison($idLivreur, $nb)
+    {
         //$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
-       $sql="UPDATE virupedia.users SET nblivraison=:nb where idUsers=:idLivreur";        
-       $db =Config::getConnexion();
-        try{
-            $req=$db->prepare($sql);
-     
-          
+        $sql = "UPDATE virupedia.users SET nblivraison=:nb where idUsers=:idLivreur";
+        $db = Config::getConnexion();
+        try {
+            $req = $db->prepare($sql);
 
 
-            $req->bindValue(':nb',$nb+1);
-            $req->bindValue(':idLivreur',$idLivreur);
-        
+
+
+            $req->bindValue(':nb', $nb + 1);
+            $req->bindValue(':idLivreur', $idLivreur);
+
             $req->execute();
-        }
-        catch (Exception $e){
-            die('Erreur: '.$e->getMessage());
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
         }
     }
-
-
-    
 }
-?>

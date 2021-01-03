@@ -4,7 +4,7 @@ class livreur
 {
 
 
-    
+
     private $nom_livreur;
     private $prenom_livreur;
     private $Address_livreur;
@@ -14,7 +14,7 @@ class livreur
     private $ImageUsers_livreur;
     private $role_livreur;
     private $nblivraison_livreur;
-    
+
 
     public function getid()
     {
@@ -54,10 +54,7 @@ class livreur
     {
         return $this->role_livreur;
     }
-    public function getnblivraison_livreur()
-    {
-        return $this->nblivraison_livreur;
-    }
+
 
 
 
@@ -95,12 +92,9 @@ class livreur
     {
         $this->role_livreur = $role_livreur;
     }
-    public function setnblivraison_livreur($nblivraison_livreur)
-    {
-        $this->nblivraison_livreur = $nblivraison_livreur;
-    }
 
-    public function __construct($nom_livreur,$prenom_livreur,$Address_livreur,$login_livreur,$Cin_livreur,$Password_livreur,$ImageUsers_livreur,$role_livreur,$nblivraison_livreur)
+
+    public function __construct($nom_livreur, $prenom_livreur, $Address_livreur, $login_livreur, $Cin_livreur, $Password_livreur, $ImageUsers_livreur, $role_livreur)
     {
         $this->nom_livreur = $nom_livreur;
         $this->prenom_livreur = $prenom_livreur;
@@ -110,7 +104,5 @@ class livreur
         $this->Password_livreur = $Password_livreur;
         $this->ImageUsers_livreur = $ImageUsers_livreur;
         $this->role_livreur = $role_livreur;
-        $this->nblivraison_livreur = $nblivraison_livreur;
     }
 }
-?>

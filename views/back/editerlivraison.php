@@ -1,6 +1,6 @@
 <?php
-include "C://wamp64/www/test2/TravailProjet/newwork/Projetwebtest - Copy/Controller/Crudlivraison.php";
-include_once "C://wamp64/www/test2/TravailProjet/newwork/Projetwebtest - Copy/Model/livraison.php";
+include "C://xampp/htdocs/virupedia/controller/Crudlivraison.php";
+include_once "C://xampp/htdocs/virupedia/model/livraison.php";
 
 
 $error = "";
@@ -13,29 +13,28 @@ $livraisonr = new livraisonr();
 if (
     isset($_POST["date_livraison"]) &&
     isset($_POST["etat_livraison"]) &&
-    isset($_POST["Adresse_livraison"]) 
-    
-   
-    
-    )
- {
+    isset($_POST["Adresse_livraison"])
+
+
+
+) {
     if (
         !empty($_POST["date_livraison"]) &&
         !empty($_POST["etat_livraison"]) &&
         !empty($_POST["Adresse_livraison"])
-        
-        
+
+
 
     ) {
         $livraison = new livraison(
             $_POST['date_livraison'],
             $_POST['etat_livraison'],
             $_POST['Adresse_livraison']
-            
-            
+
+
 
         );
-        $livraisonr->modifierlivraison($livraison,$_GET['idlivraison']);
+        $livraisonr->modifierlivraison($livraison, $_GET['idlivraison']);
         //header('Location:../front/blogs.php');
     } else
         echo "Missing information";
@@ -120,7 +119,7 @@ if (
                                     <input type="text" class="form-control" name="Adresse_livraison" id="Adresse" value="<?php echo $livraison['AddressLivraison']; ?> ">
                                 </div>
 
-                                
+
 
 
 

@@ -1,6 +1,6 @@
 <?php
-include_once 'C://wamp64/www/test2/TravailProjet/newwork/Projetwebtest - Copy/Model/livraison.php';
-include_once 'C://wamp64/www/test2/TravailProjet/newwork/Projetwebtest - Copy/Controller/Crudlivraison.php';
+include_once 'C://xampp/htdocs/virupedia/model/livraison.php';
+include_once 'C://xampp/htdocs/virupedia/controller/Crudlivraison.php';
 
 $error = "";
 
@@ -13,26 +13,25 @@ if (
     isset($_POST["date_livraison"]) &&
     isset($_POST["etat_livraison"]) &&
     isset($_POST["Adresse_livraison"])
-    
-   
-    
-    )
- {
+
+
+
+) {
     if (
         !empty($_POST["date_livraison"]) &&
         !empty($_POST["etat_livraison"]) &&
         !empty($_POST["Adresse_livraison"])
-        
-        
-        
+
+
+
 
     ) {
         $livraison = new livraison(
             $_POST['date_livraison'],
             $_POST['etat_livraison'],
             $_POST['Adresse_livraison']
-        
-            
+
+
 
         );
         $livraisonr->Ajouterlivraison($livraison);
@@ -98,18 +97,18 @@ if (
 
                             <div class="form-group">
                                 <label for="etat_livraison">etat</label>
-                                <input  class="form-control" name="etat_livraison" type="text">
+                                <input class="form-control" name="etat_livraison" type="text">
                             </div>
 
 
                             <div class="form-group">
                                 <label for="Adresse_livraison">Adresse De la Livraison</label>
-                                <input  class="form-control" name="Adresse_livraison" type="text">
+                                <input class="form-control" name="Adresse_livraison" type="text">
                             </div>
 
 
 
-                            
+
 
 
 

@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <?php
 session_start();
 
@@ -6,16 +8,31 @@ require_once 'header_main.php';
 
 <!-- header -->
 <?php require_once 'header.php'; ?>
+<style>
+    .button-clicked {
+        background: red;
+    }
+</style>
+<script>
+    $("#button").click(function() {
+        $("#button").addClass('button-clicked');
+    });
+</script>
 <!-- //header -->
 
 <?php
 include "../../controller/ajouterArticle.php";
 include_once "../../model/Articles.php";
 
+$r = 2;
 
 $articleC = new articleC();
 $idarticle = $_GET['idNewsArticle'];
-$idUsers = 3;
+$idUsers = 1;
+
+
+
+
 
 $error = "";
 if (
@@ -44,12 +61,14 @@ if (
             $_POST['source'],
             $_POST['urlImage'],
             $_POST['notifCreateur'],
-            $_POST['Datearticle']
-
+            $_POST['Datearticle'],
+            $_POST['nbrvue'],
+            $_POST['nbrlike']
         );
     } else
         echo "Missing information";
 }
+
 ?>
 
 
@@ -87,6 +106,9 @@ if (
 
             $commentaireC->ajouterCommentaire($commentaire, $idarticle, $idUsers);
         } ?>
+
+
+
         <script>
             if (window.history.replaceState) {
                 window.history.replaceState(null, null, window.location.href);
@@ -100,12 +122,50 @@ if (
 
             ?>
 
+<?php
 
+//likes
+// create like
+include "../../controller/likeC.php";
+
+$likeC = new likeC();
+
+if (isset($_POST['like'])) {
+    // echo "like button pressed";
+    $likeC->ajouterlike($idarticle, $idUsers);
+    // echo "error add like";
+}
+if (isset($_POST['dislike'])) {
+    $likeC->supprimerlike($idarticle, $idUsers);
+    $r = 0;
+}
+
+
+
+$countlike = $likeC->countlike($idarticle);
+
+
+$listelike = $likeC->userlikes($idUsers);
+//foreach ($listelike as $row) {
+//  echo $row->idNewsArticle;
+//   echo "<br>";
+//}
+
+foreach ($listelike as $row) {
+    if (($row->idNewsArticle) == $idarticle) {
+        $r = 1;
+        break;
+    } else {
+        $r = 0;
+    }
+}
+
+
+?>
 
 
 <!-- Page Content -->
 <div class="container">
-
 
     <div id="error">
         <?php echo $error; ?>
@@ -117,6 +177,7 @@ if (
         <?php
         if (isset($_GET['idNewsArticle'])) {
             $article = $articleC->recupererarticle($_GET['idNewsArticle']);
+
         ?>
 
             <!-- Post Content Column -->
@@ -155,6 +216,21 @@ if (
                         <footer class="blockquote-footer">Someone famous in
                             <cite title="Source Title"><?php echo $article['source']; ?></cite>
                         </footer>
+                        <?php if ($r == 0 || $r == 2) { ?>
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                            <button id="button" class="btn btn-primary" name="like">Like</button>
+                        <?php }
+                        if ($r == 1) {
+                        ?>
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                            <button id="button" class="btn btn-primary" name="dislike">DisLike</button>
+                        <?php
+                        }
+                        ?>
+
+                        <!-- <button type="button" class="btn btn-info"><?php// echo "Number of views : " . $article['nbrvue']; ?></button>-->
+                        <button type="button" class="btn btn-info"><?php echo "Number of Likes : " . $countlike->sum; ?></button>
+
                     </blockquote>
 
 
@@ -214,7 +290,7 @@ if (
                             <?PHP echo $comment->dateCommentaire; ?>
                             <?php if ($comment->idUsers == $idUsers) { ?>
 
-                                <a onclick="return confirm('Vous êtes sure de supprimer votre commentaire ?');" href="../../controller/supprimerCommentaires.php?idCommentaire=<?php echo $comment->idCommentaire; ?>">
+                                <a onclick="return confirm('Vous êtes sure de supprimer votre commentaire ?');" href="../../controller/supprimerCommentaires.php?idCommentaire=<?php echo $comment->idCommentaire; ?>&idUsers=<?php echo $comment->idUsers; ?>&idNewsArticle=<?php echo $comment->idNewsArticle; ?>">
                                     <input value="supprimer" type="submit" class="btn btn-danger deleteCommentaire">
                                     <span class="glyphicon glyphicon-trash"></span>
                                     </button>

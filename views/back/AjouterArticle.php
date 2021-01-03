@@ -37,13 +37,22 @@ if (
             $_POST['urlImage'],
             $_POST['notifCreateur'],
             $_POST['Datearticle']
+
         );
-        $articleC->ajouterArticle($article);
-        header('Location:../front/blogs.php');
+        if (!preg_match("/^[a-zA-Z0-9]*$/", $_POST['titre'])) {
+            header("Location: AjouterArticle.php?error=invalidtitre");
+            exit();
+        } else {
+            $articleC->ajouterArticle($article);
+            header('Location:../front/blogs.php');
+        }
     } else ?>
     <p class="p-3 mb-0 bg-danger text-white "> <?php echo "Missing information" ?> </p> <?php
                                                                                     }
                                                                                         ?>
+
+
+
 
 
 <!DOCTYPE html>
@@ -65,6 +74,7 @@ if (
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <script src="//cdn.ckeditor.com/4.15.1/full/ckeditor.js"></script>
 
 </head>
 
@@ -135,8 +145,11 @@ if (
                             <button type="submit" value="Envoyer" class="btn btn-primary">Submit</button>
 
                         </form>
-                    </div>
 
+                    </div>
+                    <script>
+                        CKEDITOR.replace('texte');
+                    </script>
 
 
 

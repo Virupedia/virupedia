@@ -1,7 +1,7 @@
 <?php
 
-include "C://wamp64/www/Virupedia/virupedia/Config.php";
-require_once 'C://wamp64/www/Virupedia/virupedia/Model/livraison.php';
+include_once "C://xampp/htdocs/virupedia/config.php";
+require_once 'C://xampp/htdocs/virupedia/model/livraison.php';
 
 class livraisonr
 {
@@ -71,12 +71,6 @@ class livraisonr
         } catch (PDOException $e) {
             $e->getMessage();
         }
-        
-
-
-
-
-
     }
 
 
@@ -97,28 +91,26 @@ class livraisonr
         }
     }
 
-   
 
 
-        function recherche($search_value)
-        {
-            $sql="SELECT * FROM virupedia.livraison where  idLivraison like '$search_value' or date_liv like '%$search_value%' or etat like '%$search_value%' or AddressLivraison like '%$search_value%' or idUsers like '%$search_value%' ";
-    
-            //global $db;
-            $db =Config::getConnexion();
-    
-            try{
-                $result=$db->query($sql);
-    
-                return $result;
-    
-            }
-            catch (Exception $e){
-                die('Erreur: '.$e->getMessage());
-            }
+
+    function recherche($search_value)
+    {
+        $sql = "SELECT * FROM virupedia.livraison where  idLivraison like '$search_value' or date_liv like '%$search_value%' or etat like '%$search_value%' or AddressLivraison like '%$search_value%' or idUsers like '%$search_value%' ";
+
+        //global $db;
+        $db = Config::getConnexion();
+
+        try {
+            $result = $db->query($sql);
+
+            return $result;
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
         }
+    }
 
-        public function CountLivraisonlivre()
+    public function CountLivraisonlivre()
     {
         $db = config::getConnexion();
         $req1 = $db->query("SELECT * FROM virupedia.livraison Where etat=1");
@@ -134,29 +126,17 @@ class livraisonr
 
     function trier($par)
     {
-        $sql="SELECT * FROM virupedia.livraison order by $par ";
+        $sql = "SELECT * FROM virupedia.livraison order by $par ";
 
         //global $db;
-        $db =Config::getConnexion();
+        $db = Config::getConnexion();
 
-        try{
-            $result=$db->query($sql);
+        try {
+            $result = $db->query($sql);
 
             return $result;
-
-        }
-        catch (Exception $e){
-            die('Erreur: '.$e->getMessage());
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
         }
     }
-
-
-
-
-
-
-
-
-    
 }
-?>

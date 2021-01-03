@@ -1,6 +1,6 @@
 <?PHP
-require_once "C://xampp/htdocs/webprojettest/allfolders/config.php";
-require_once 'C://xampp/htdocs/webprojettest/allfolders/model/Mailing.php';
+include_once "C://xampp/htdocs/virupedia/config.php";
+require_once 'C://xampp/htdocs/virupedia/model/Mailing.php';
 
 class MailC
 {

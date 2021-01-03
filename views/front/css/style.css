@@ -224,7 +224,7 @@ a:hover {
 
 .site-navbar {
   margin-bottom: 0px;
-  z-index: 1999;
+  z-index: 5;
   position: relative;
   top: 0;
   width: 100%;

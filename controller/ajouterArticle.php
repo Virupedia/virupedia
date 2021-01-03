@@ -1,5 +1,5 @@
 <?PHP
-include "C://xampp/htdocs/virupedia/config.php";
+include_once "C://xampp/htdocs/virupedia/config.php";
 require_once 'C://xampp/htdocs/virupedia/model/Articles.php';
 
 class articleC
@@ -20,7 +20,7 @@ class articleC
                 'source' => $article->getSource(),
                 'urlImage' => $article->getUrlImage(),
                 'notifCreateur' => $article->getNotifCreateur(),
-                'Datearticle' => $article->getDatearticle()
+                'Datearticle' => $article->getDatearticle(),
 
             ]);
         } catch (Exception $e) {
@@ -33,6 +33,7 @@ class articleC
 
         $sql = "SELECT * FROM newsarticle";
         $db = config::getConnexion();
+
         try {
             $liste = $db->query($sql);
             return $liste;
@@ -122,6 +123,131 @@ class articleC
         try {
             $liste = $db->query($sql);
             return $liste;
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
+        }
+    }
+
+
+    function sortlikes()
+    {
+        $sql = "SELECT * from newsarticle order by Datearticle asc";
+        $db = config::getConnexion();
+        try {
+            $liste = $db->query($sql);
+            return $liste;
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+    function updatearticlevue($id)
+    {
+        $sql = "UPDATE newsarticle SET nbrvue=nbrvue+1 WHERE idNewsArticle = :idNewsArticle";
+        $db = config::getConnexion();
+        $req = $db->prepare($sql);
+        $req->bindValue(':idNewsArticle', $id);
+        try {
+            $req->execute();
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
+        }
+    }
+
+
+
+
+    function sortarticlebynbrlikes()
+    {
+        $sql = "SELECT * from newsarticle order by Datearticle asc";
+        $db = config::getConnexion();
+        try {
+            $liste = $db->query($sql);
+            return $liste;
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
+        }
+    }
+
+
+    public function AfficherArticlePaginer($page, $perPage)
+    {
+        $start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
+        $sql = "SELECT * FROM newsarticle LIMIT {$start},{$perPage}";
+        $db = config::getConnexion();
+        try {
+            $liste = $db->prepare($sql);
+            $liste->execute();
+            $liste = $liste->fetchAll(PDO::FETCH_ASSOC);
+            return $liste;
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
+        }
+    }
+
+
+    public function calcTotalRows($perPage)
+    {
+        $sql = "SELECT SQL_CALC_FOUND_ROWS * FROM newsarticle";
+        $db = config::getConnexion();
+        try {
+
+            $liste = $db->query($sql);
+            $total = $db->query("SELECT FOUND_ROWS() as total")->fetch()['total'];
+            $pages = ceil($total / $perPage);
+            return $pages;
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
+        }
+    }
+
+
+
+    /* function lastArticle()
+    {
+        $sql = "SELECT * from newsarticle order by Datearticle DESC LIMIT 1";
+        $db = config::getConnexion();
+        try {
+            $liste = $db->query($sql);
+            return $liste;
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
+        }
+    }*/
+
+    function lastArticle()
+    {
+        $db = config::getConnexion();
+        $sql = "SELECT * from newsarticle order by Datearticle DESC LIMIT 1";
+        $req = $db->prepare($sql);
+        $req->execute();
+        $result = $req->fetchAll(PDO::FETCH_OBJ);
+        return $result;
+    }
+
+
+
+
+    function recherche($search_value)
+    {
+        $sql = "SELECT * FROM newsarticle where  idNewsArticle like '$search_value' or  titre like '%$search_value%' or auteur like '%$search_value%' or source like '%$search_value%'or Datearticle like '%$search_value%' ";
+
+        //global $db;
+        $db = Config::getConnexion();
+
+        try {
+            $result = $db->query($sql);
+
+            return $result;
         } catch (Exception $e) {
             die('Erreur: ' . $e->getMessage());
         }

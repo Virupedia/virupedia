@@ -31,8 +31,9 @@ if (
             $_POST['source'],
             $_POST['urlImage'],
             $_POST['notifCreateur'],
-            $_POST['Datearticle']
-
+            $_POST['Datearticle'],
+            $_POST['nbrvue'],
+            $_POST['nbrlike']
         );
         $articleC->modifierarticle($article, $_GET['idNewsArticle']);
         header('Location:../front/blogs.php');
@@ -61,7 +62,7 @@ if (
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+    <script src="//cdn.ckeditor.com/4.15.1/full/ckeditor.js"></script>
 </head>
 
 <body id="page-top">
@@ -147,7 +148,9 @@ if (
 
                             </form>
                         </div>
-
+                        <script>
+                            CKEDITOR.replace('texte');
+                        </script>
 
 
 

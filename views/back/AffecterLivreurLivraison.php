@@ -1,26 +1,25 @@
-<?php include "C://wamp64/www/test2/TravailProjet/newwork/Projetwebtest - Copy/Controller/CrudLivreur.php";
+<?php include "C://xampp/htdocs/virupedia/controller/CrudLivreur.php";
 
-$id=0;
-                        if(isset($_GET['id']))
-                        {
-                        $id=$_GET['id'];
-                        }
+$id = 0;
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+}
 
-$livraison= new livreurr();
-                        if(isset($_GET['idUsers']) && isset($_GET['idLivraison']))
-                        {
-                       
-                       $livraison->AffecterLivreurLivraison($_GET['idUsers'],$_GET['idLivraison']);
+$livraison = new livreurr();
+if (isset($_GET['idUsers']) && isset($_GET['idLivraison'])) {
+
+    $livraison->AffecterLivreurLivraison($_GET['idUsers'], $_GET['idLivraison']);
 
 
 
-                       $nb=$livraison->getnbLivraison($_GET['idUsers']);
-                       foreach ($nb as $li) {$nombre=$li['nblivraison'];}
-                       $livraison->Livreur_INC_nblivraison($_GET['idUsers'],$nombre);
-                        header('Location: Modifierlivraison.php');
+    $nb = $livraison->getnbLivraison($_GET['idUsers']);
+    foreach ($nb as $li) {
+        $nombre = $li['nblivraison'];
+    }
+    $livraison->Livreur_INC_nblivraison($_GET['idUsers'], $nombre);
+    header('Location: Modifierlivraison.php');
+}
 
-                        }
-                        
 
 
 
@@ -72,12 +71,12 @@ $livraison= new livreurr();
                 <div class="container-fluid">
                     <div>
                         <?PHP
-                        
-                        
+
+
 
                         $livreurr = new livreurr();
                         $listelivreur = $livreurr->afficherLivreur();
-                      /*  if(isset($_GET['maction']))
+                        /*  if(isset($_GET['maction']))
                         {$maction=$_GET['maction'];
     
                         $par=$_GET['par'];
@@ -89,24 +88,24 @@ $livraison= new livreurr();
                         $livreurr= new livreurr();
                         $listelivreur=$livreurr->recherche($search_value);
                         }*/
-                        
+
                         ?>
                         <table class="table table-striped table-sm table-dark">
                             <tr>
-                            <th scope="col" class="bg-primary">Id</th>
-                            <th scope="col" class="bg-primary">Name</th>
-                            <th scope="col" class="bg-primary">Last Name</th>
-                            <th scope="col" class="bg-primary">Address</th>
-                            <th scope="col" class="bg-primary">Login</th>
-                            <th scope="col" class="bg-primary">Cin</th>
-                            <th scope="col" class="bg-primary">Password</th>
-                            <th scope="col" class="bg-primary">Delivery man'Image</th>
-                            <th scope="col" class="bg-primary">His Role</th>
-                           
-                            
-                            <th scope="col" class="bg-primary">Actions</th>
-                            <th scope="col" class="bg-primary"> </th>
-                              <th scope="col" class="bg-primary"> </th>
+                                <th scope="col" class="bg-primary">Id</th>
+                                <th scope="col" class="bg-primary">Name</th>
+                                <th scope="col" class="bg-primary">Last Name</th>
+                                <th scope="col" class="bg-primary">Address</th>
+                                <th scope="col" class="bg-primary">Login</th>
+                                <th scope="col" class="bg-primary">Cin</th>
+                                <th scope="col" class="bg-primary">Password</th>
+                                <th scope="col" class="bg-primary">Delivery man'Image</th>
+                                <th scope="col" class="bg-primary">His Role</th>
+
+
+                                <th scope="col" class="bg-primary">Actions</th>
+                                <th scope="col" class="bg-primary"> </th>
+                                <th scope="col" class="bg-primary"> </th>
                                 <!-- 
                             </tr>
                             <div class="card-body">
@@ -125,44 +124,45 @@ $livraison= new livreurr();
                               <a class="dropdown-item " href="AffecterLivreurLivraison.php?maction=trier&par=etat">Number of Deliveries</a> 
                           </div>
 						  <div><p>&nbsp;</p></div>-->
-                            <?PHP
-                            foreach ($listelivreur as $row) {
-                            ?>
-                                <tr>
-                                    <td><?PHP echo $row['idUsers']; ?></td>
-                                    <td><?PHP echo $row['nameUsers']; ?></td>
-                                    <td><?PHP echo $row['lastnameUsers']; ?></td>
-                                    <td><?PHP echo $row['address']; ?></td>
-                                    <td><?PHP echo $row['Login']; ?></td>
-                                    <td><?PHP echo $row['Cin']; ?></td>
-                                    <td><?PHP echo $row['Password']; ?></td>
-                                    <td class="table-img">
-                                                    <img width="100" src="../front/images/<?PHP echo $row['ImageUsers']; ?> "> </td>
-                                                    <td style="text-align: center;vertical-align: middle;">  <?PHP  echo $row['role']; ?>  </td>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    <td>
-                                        <a href="AffecterLivreurLivraison.php?idUsers=<?=$row['idUsers']; ?>&idLivraison=<?=$id?>"class="btn btn-danger"> Affecter Livreur </a>
-                                        
-                                    </td>
-                                    
-                                    
-                                </tr>
-                            <?PHP
-                            }
-                            ?>
-                             <div class="card-header d-flex align-items-center">
-                      <h3 class="h8">Veuillez Choisir Un livreur</h3>
-                      
-                    </div>
-                    
-                    <div class="card-body">
+                                <?PHP
+                                foreach ($listelivreur as $row) {
+                                ?>
+                            <tr>
+                                <td><?PHP echo $row['idUsers']; ?></td>
+                                <td><?PHP echo $row['nameUsers']; ?></td>
+                                <td><?PHP echo $row['lastnameUsers']; ?></td>
+                                <td><?PHP echo $row['address']; ?></td>
+                                <td><?PHP echo $row['Login']; ?></td>
+                                <td><?PHP echo $row['Cin']; ?></td>
+                                <td><?PHP echo $row['Password']; ?></td>
+                                <td class="table-img">
+                                    <img width="100" src="../front/images/<?PHP echo $row['ImageUsers']; ?> ">
+                                </td>
+                                <td style="text-align: center;vertical-align: middle;"> <?PHP echo $row['role']; ?> </td>
+
+
+
+
+
+                                <td>
+                                    <a href="AffecterLivreurLivraison.php?idUsers=<?= $row['idUsers']; ?>&idLivraison=<?= $id ?>" class="btn btn-danger"> Affecter Livreur </a>
+
+                                </td>
+
+
+                            </tr>
+                        <?PHP
+                                }
+                        ?>
+                        <div class="card-header d-flex align-items-center">
+                            <h3 class="h8">Veuillez Choisir Un livreur</h3>
+
+                        </div>
+
+                        <div class="card-body">
 
                         </table>
-                       
+
                     </div>
 
                 </div>

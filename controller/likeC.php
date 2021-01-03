@@ -1,5 +1,5 @@
 <?PHP
-require_once "C://xampp/htdocs/webprojettest/allfolders/config.php";
+include_once "C://xampp/htdocs/virupedia/config.php";
 
 class likeC
 {

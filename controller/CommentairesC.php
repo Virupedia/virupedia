@@ -1,6 +1,6 @@
 <?php
 
-require_once "C://xampp/htdocs/virupedia/config.php";
+include_once "C://xampp/htdocs/virupedia/config.php";
 require_once 'C://xampp/htdocs/virupedia/model/Commentaire.php';
 
 class CommentairesC
@@ -88,7 +88,7 @@ class CommentairesC
 			return 1;
 		}
 	}
-}
+
 	/*
 	public function findNextAutoIncrementId()
 	{
@@ -101,13 +101,24 @@ class CommentairesC
 		return $result;
 	}*/
 
-/*	public function nbrCommentairesTotale()
+	public function nbrCommentairesTotale()
 	{
-		$sql = "SELECT COUNT(*) AS sum FROM Commentaire";
+		$sql = "SELECT COUNT(*) AS sum FROM commentaire";
 		$db = config::getConnexion();
 		$req = $db->prepare($sql);
 		$req->execute();
 		$result = $req->fetch(PDO::FETCH_OBJ);
 		return $result;
 	}
-}*/
+
+	public function nbrCommentairesbyarticle($ida)
+	{
+		$sql = "SELECT COUNT(*) AS sum FROM commentaire  WHERE idNewsArticle = :idNewsArticle;";
+		$db = config::getConnexion();
+		$req = $db->prepare($sql);
+		$req->bindValue(':idNewsArticle', $ida);
+		$req->execute();
+		$result = $req->fetch(PDO::FETCH_OBJ);
+		return $result;
+	}
+}

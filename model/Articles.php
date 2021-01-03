@@ -11,7 +11,6 @@ class article
     private $Datearticle;
 
 
-
     public function getidNewsArticle()
     {
         return $this->idNewsArticle;
@@ -46,6 +45,18 @@ class article
         return $this->Datearticle;
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
     public function setTitre($titre)
     {
         $this->titre = $titre;
@@ -74,6 +85,11 @@ class article
     {
         $this->Datearticle = $Datearticle;
     }
+
+
+
+
+
 
     public function __construct($titre, $texte, $auteur, $source, $urlImage, $notifCreateur, $Datearticle)
     {

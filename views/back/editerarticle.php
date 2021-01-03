@@ -10,6 +10,40 @@ if (!isset($_POST['add2'])) {
 }
 
 ?>
+<?php
+
+//pagination
+
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$perpage = isset($GET['per-page']) && $_GET['per-page'] <= 50 ? (int)$_GET['per-page'] : 3;
+
+//echo $page;
+//echo $perpage;
+
+$articlee = new articleC();
+
+$listearticle = $articlee->AfficherArticlePaginer($page, $perpage);
+$totalP = $articlee->calcTotalRows($perpage);
+
+
+?>
+
+
+<?php
+//la recherche
+
+if (isset($_GET['recherche'])) {
+    $search_value = $_GET["recherche"];
+    $listearticle = $articlee->recherche($search_value);
+}
+?>
+
+
+
+
+
+
+
 
 
 <!DOCTYPE html>
@@ -63,26 +97,18 @@ if (!isset($_POST['add2'])) {
                         } else if ($_SESSION['attnum1'] < $_SESSION['attnum2']) {
                             $listearticle = $articleC->sortdate2();
                         } else {
-                            $listearticle = $articleC->afficherarticle();
+                            //  $listearticle = $articleC->afficherarticle();
                         }
 
                         ?>
-                        <!--  <table border=1 align='center'>
-                            <tr>
-                                <th>Id</th>
-                                <th>titre</th>
-                                <th>texte</th>
-                                <th>auteur</th>
-                                <th>source</th>
-                                <th>urlImage</th>
-                                <th>notifcreateur</th>
-                            </tr>  -->
 
 
 
 
-
-
+                        <form method="get" action="editerarticle.php">
+                            <input type="text" class=" btn btn-dark float-right" name="recherche" placeholder=" Articles">
+                            <input type="submit" class="btn btn-dark float-right" value="Chercher">
+                        </form>
 
 
                         <table class="table">
@@ -96,6 +122,8 @@ if (!isset($_POST['add2'])) {
                                     <th scope="col">Image</th>
                                     <th scope="col">Notification</th>
                                     <th scope="col">Datearticle</th>
+
+
                                     <th>
                                         <form method='post'>
                                             <input name='add1' type="submit" value='OrderAsc' class="btn btn-success">
@@ -128,6 +156,8 @@ if (!isset($_POST['add2'])) {
                                     <td><?PHP echo $row['notifCreateur']; ?></td>
                                     <td><?PHP echo $row['Datearticle']; ?></td>
 
+
+
                                     <td>
                                         <form method="POST" action="../../controller/supprimerarticle.php">
                                             <input type="submit" name="supprimer" value="supprimer" class="btn btn-danger">
@@ -143,6 +173,21 @@ if (!isset($_POST['add2'])) {
 
                             ?>
                         </table>
+
+                        <!--pagination begin-->
+                        <?php
+
+                        // }
+                        for ($x = 1; $x <= $totalP; $x++) :
+
+                        ?>
+
+                            <a href="?page=<?php echo $x; ?>&per-page=<?php echo $perpage; ?>"><?php echo $x; ?></a>
+
+                        <?php endfor; ?>
+                        <!--pagination end-->
+
+
 
                     </div>
 

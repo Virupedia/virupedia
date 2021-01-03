@@ -1,4 +1,4 @@
-<?php require_once "C://wamp64/www/test2/TravailProjet/newwork/Projetwebtest - Copy/Controller/Crudlivraison.php" ?>
+<?php require_once "C://xampp/htdocs/virupedia/controller/Crudlivraison.php" ?>
 
 
 <!DOCTYPE html>
@@ -48,137 +48,138 @@
 
                         $livraisonr = new livraisonr();
                         $livraisonrr = new livraisonr();
-                        
+
                         $listelivraison = $livraisonr->afficherlivraison();
-                        
-                       $dataPoints = array(
-                           array("label"=> "Delivered", "y"=> (int)$livraisonrr->CountLivraisonlivre()),
-                            array("label"=> "Undelivered", "y"=> (int)$livraisonrr->CountLivraisonnonlivre())
-                        
+
+                        $dataPoints = array(
+                            array("label" => "Delivered", "y" => (int)$livraisonrr->CountLivraisonlivre()),
+                            array("label" => "Undelivered", "y" => (int)$livraisonrr->CountLivraisonnonlivre())
+
                         );
-                      
-                        
-                       if(isset($_GET['recherche']))
-                       {
-                        $search_value=$_GET["recherche"];
-                        $livraisonr= new livraisonr();
-                        $listelivraison=$livraisonr->recherche($search_value);
+
+
+                        if (isset($_GET['recherche'])) {
+                            $search_value = $_GET["recherche"];
+                            $livraisonr = new livraisonr();
+                            $listelivraison = $livraisonr->recherche($search_value);
                         }
-                        if(isset($_GET['maction']))
-                        {$maction=$_GET['maction'];
-    
-                        $par=$_GET['par'];
-   
-                        $listelivraison=$livraisonr->trier($par); 
-                       }
+                        if (isset($_GET['maction'])) {
+                            $maction = $_GET['maction'];
+
+                            $par = $_GET['par'];
+
+                            $listelivraison = $livraisonr->trier($par);
+                        }
                         ?>
-                         
+
                         <table class="table table-striped table-sm table-dark">
-                        <tr>
-                              <th scope="col" class="bg-primary">Id Livraison</th>
-                              <th scope="col" class="bg-primary">Date de la livraison </th>
-                              <th scope="col" class="bg-primary">Etat</th>
-                              <th scope="col" class="bg-primary">Address</th>
-                              <th scope="col" class="bg-primary">IdLivreur</th>
-                              <th scope="col" class="bg-primary">Actions</th>
-                              <th scope="col" class="bg-primary"> </th>
-                              <th scope="col" class="bg-primary"> </th>
-                        
+                            <tr>
+                                <th scope="col" class="bg-primary">Id Livraison</th>
+                                <th scope="col" class="bg-primary">Date de la livraison </th>
+                                <th scope="col" class="bg-primary">Etat</th>
+                                <th scope="col" class="bg-primary">Address</th>
+                                <th scope="col" class="bg-primary">IdLivreur</th>
+                                <th scope="col" class="bg-primary">Actions</th>
+                                <th scope="col" class="bg-primary"> </th>
+                                <th scope="col" class="bg-primary"> </th>
+
                             </tr>
 
                             <div class="card-body">
-                          <form method="get" action="Modifierlivraison.php" >
-                              <input type="text" class=" btn btn-dark float-right" name="recherche" placeholder=" dans Les Livraisons">
-                              <input type="submit" class="btn btn-dark float-right"  value="Chercher">
-                          </form>
+                                <form method="get" action="Modifierlivraison.php">
+                                    <input type="text" class=" btn btn-dark float-right" name="recherche" placeholder=" dans Les Livraisons">
+                                    <input type="submit" class="btn btn-dark float-right" value="Chercher">
+                                </form>
 
-                          <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              sort by
-                          </a>
+                                <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    sort by
+                                </a>
 
-                          <div class="dropdown-menu " aria-labelledby="dropdownMenuLink">
-                              <a class="dropdown-item " href="Modifierlivraison.php?maction=trier&par=idlivraison">idlivraison</a>
-                              <a class="dropdown-item " href="Modifierlivraison.php?maction=trier&par=date_liv">date_liv</a>
-                              <a class="dropdown-item " href="Modifierlivraison.php?maction=trier&par=etat">etat</a>
-                              <a class="dropdown-item " href="Modifierlivraison.php?maction=trier&par=AddressLivraison">Adress</a>
-                          </div>
-						  <div><p>&nbsp;</p></div>
+                                <div class="dropdown-menu " aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item " href="Modifierlivraison.php?maction=trier&par=idlivraison">idlivraison</a>
+                                    <a class="dropdown-item " href="Modifierlivraison.php?maction=trier&par=date_liv">date_liv</a>
+                                    <a class="dropdown-item " href="Modifierlivraison.php?maction=trier&par=etat">etat</a>
+                                    <a class="dropdown-item " href="Modifierlivraison.php?maction=trier&par=AddressLivraison">Adress</a>
+                                </div>
+                                <div>
+                                    <p>&nbsp;</p>
+                                </div>
 
 
-                            <?PHP
-                            foreach ($listelivraison as $row) {
-                            ?>
-                                <tr>
-                                    <td><?PHP echo $row['idlivraison']; ?></td>
-                                    <td><?PHP echo $row['date_liv']; ?></td>
-                                    <td><?PHP echo $row['etat']; ?></td>
-                                    <td><?PHP echo $row['AddressLivraison']; ?></td>
-                                    <td><?PHP echo $row['idUsers']; ?></td>
-                                    
-                                    
-                                    
+                                <?PHP
+                                foreach ($listelivraison as $row) {
+                                ?>
+                                    <tr>
+                                        <td><?PHP echo $row['idlivraison']; ?></td>
+                                        <td><?PHP echo $row['date_liv']; ?></td>
+                                        <td><?PHP echo $row['etat']; ?></td>
+                                        <td><?PHP echo $row['AddressLivraison']; ?></td>
+                                        <td><?PHP echo $row['idUsers']; ?></td>
 
-                                    <td>
-                                        <form method="POST"  action="../../controller/supprimerlivraison.php">
-                                            <input type="submit" name="supprimer" class="btn btn-danger" value="supprimer">
-                                            <input type="hidden" value=<?PHP echo $row['idlivraison']; ?> name="idlivraison">
-                                            
-                                        </form>
-                                    </td>
-                                    <td>
-                                        <a href="editerlivraison.php?idlivraison=<?PHP echo $row['idlivraison']; ?>"class="btn btn-info"> Modifier </a>
-                                    </td>
-                                    <td>
-                                        
-                                    <a href="AffecterLivreurLivraison.php?&id=<?=$row['idlivraison']; ?>"class="btn btn-primary"> Affecter livreur </a> 
-                                    </td>
-                                </tr>
-                                
-                                
-                            <?PHP
-                            }
-                            ?>
+
+
+
+                                        <td>
+                                            <form method="POST" action="../../controller/supprimerlivraison.php">
+                                                <input type="submit" name="supprimer" class="btn btn-danger" value="supprimer">
+                                                <input type="hidden" value=<?PHP echo $row['idlivraison']; ?> name="idlivraison">
+
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <a href="editerlivraison.php?idlivraison=<?PHP echo $row['idlivraison']; ?>" class="btn btn-info"> Modifier </a>
+                                        </td>
+                                        <td>
+
+                                            <a href="AffecterLivreurLivraison.php?&id=<?= $row['idlivraison']; ?>" class="btn btn-primary"> Affecter livreur </a>
+                                        </td>
+                                    </tr>
+
+
+                                <?PHP
+                                }
+                                ?>
                             </div>
-                    <div class="card-header d-flex align-items-center">
-                      <h3 class="h8">La Liste des livraisons:</h3>
-                    </div>
-                    <div class="card-body">
-                    
+                            <div class="card-header d-flex align-items-center">
+                                <h3 class="h8">La Liste des livraisons:</h3>
+                            </div>
+                            <div class="card-body">
+
                         </table>
-                        
+
                         <script>
-                    window.onload = function () {
+                            window.onload = function() {
 
-                        var chart = new CanvasJS.Chart("chartContainer", {
-							theme: "light1",
-                            animationEnabled: true,
-                            exportEnabled: true,
-                            title:{
-                                text: "Delivery State"
-                            },
-                            
-                            data: [{
-                                type: "pie",
-                                showInLegend: "true",
-                                legendText: "{label}",
-                                indexLabelFontSize: 16,
-                                indexLabel: "{label} - #percent%",
-                                yValueFormatString: "฿#,##0",
-                                dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
-                            }]
-                        });
-                        chart.render();
+                                var chart = new CanvasJS.Chart("chartContainer", {
+                                    theme: "light1",
+                                    animationEnabled: true,
+                                    exportEnabled: true,
+                                    title: {
+                                        text: "Delivery State"
+                                    },
 
-                    }
-                </script>
-                <div id="chartContainer" style="height: 400px; width: 90%;"></div>
-                <script src="../../lib/canvasjs.min.js"></script>
+                                    data: [{
+                                        type: "pie",
+                                        showInLegend: "true",
+                                        legendText: "{label}",
+                                        indexLabelFontSize: 16,
+                                        indexLabel: "{label} - #percent%",
+                                        yValueFormatString: "฿#,##0",
+                                        dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+                                    }]
+                                });
+                                chart.render();
+
+                            }
+                        </script>
+                        <div id="chartContainer" style="height: 400px; width: 90%;"></div>
+                        <script src="../../lib/canvasjs.min.js"></script>
                     </div>
 
                 </div>
                 <!-- /.container-fluid -->
                 <a href="modifierlivraison.php" class="btn btn-primary"> retour</a>
-                
+
             </div>
             <!-- End of Main Content -->
 

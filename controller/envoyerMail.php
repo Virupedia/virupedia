@@ -4,7 +4,7 @@ include_once 'MailC.php';
 $nvmC = new MailC();
 $listemails = $nvmC->affichermails();
 
-require_once 'C://xampp/htdocs/webprojettest/allfolders/controller/ajouterArticle.php';
+require_once 'C://xampp/htdocs/virupedia/controller/ajouterArticle.php';
 //require_once 'C://xampp/htdocs/webprojettest/allfolders/model/Articles.php';
 $articleC = new articleC();
 $listearticle = $articleC->lastArticle();
@@ -24,7 +24,7 @@ foreach ($listemails as $row) {
 	$mail->IsSMTP();
 	$mail->Host = "smtp.gmail.com";
 
-	$mail->SMTPDebug = 2;
+	//$mail->SMTPDebug = 2;
 	//set authentification to true
 	$mail->SMTPAuth = true;
 	//set login details for Gmail account
@@ -68,7 +68,7 @@ foreach ($listemails as $row) {
 
 			. "</html>";*/
 		//$body = require "mail.html";
-		$body = file_get_contents("mail1.html");
+		$body = file_get_contents("mail1.php");
 	}
 
 
@@ -78,7 +78,6 @@ foreach ($listemails as $row) {
 
 
 
-	$mail->htmlContent = $htmlContent;
 	$mail->Body = $body;
 	//set who is sending an email
 	$mail->setFrom('virupediaproject@gmail.com', 'Virupedia');

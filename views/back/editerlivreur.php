@@ -1,6 +1,6 @@
 <?php
-include "C://wamp64/www/test2/TravailProjet/newwork/Projetwebtest - Copy/Controller/CrudLivreur.php";
-include_once "C://wamp64/www/test2/TravailProjet/newwork/Projetwebtest - Copy/Model/Livreur.php";
+include "C://xampp/htdocs/virupedia/controller/CrudLivreur.php";
+include_once "C://xampp/htdocs/virupedia/model/Livreur.php";
 
 
 $error = "";
@@ -20,11 +20,10 @@ if (
     isset($_POST["Password_Livreur"]) &&
     isset($_POST["ImageUsers_Livreur"]) &&
     isset($_POST["Prenom_Livreur"]) &&
-    isset($_POST["role_Livreur"]) 
-   
-    
-    )
- {
+    isset($_POST["role_Livreur"])
+
+
+) {
     if (
         !empty($_POST["Nom_Livreur"]) &&
         !empty($_POST["Prenom_Livreur"]) &&
@@ -34,8 +33,8 @@ if (
         !empty($_POST["Password_Livreur"]) &&
         !empty($_POST["ImageUsers_Livreur"]) &&
         !empty($_POST["Prenom_Livreur"]) &&
-        !empty($_POST["role_Livreur"]) 
-        
+        !empty($_POST["role_Livreur"])
+
 
     ) {
         $Livreur = new Livreur(
@@ -47,10 +46,10 @@ if (
             $_POST['Password_Livreur'],
             $_POST['ImageUsers_Livreur'],
             $_POST['role_Livreur']
-            
+
 
         );
-        $Livreurr->modifierLivreur($Livreur,$_GET['idUsers']);
+        $Livreurr->modifierLivreur($Livreur, $_GET['idUsers']);
         //header('Location:../front/blogs.php');
     } else
         echo "Missing information";
@@ -135,7 +134,7 @@ if (
                                     <label for="Address">adress</label>
                                     <input type="text" class="form-control" name="Address_Livreur" value="<?php echo $Livreur['address']; ?> ">
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label for="Login">Login</label>
                                     <input type="text" class="form-control" name="Login_Livreur" value="<?php echo $Livreur['Login']; ?> ">
@@ -148,13 +147,13 @@ if (
                                     <label for="Password">Password</label>
                                     <input type="text" class="form-control" name="Password_Livreur" value="<?php echo $Livreur['Password']; ?> ">
                                 </div>
-                               
+
                                 <div class="form-group">
                                     <label for="ImageUsers">Ajouter Image</label>
                                     <input type="file" class="form-control-file" name="ImageUsers_Livreur" value="<?php echo $Livreur['ImageUsers']; ?> ">
                                 </div>
 
-                               
+
 
                                 <div class="form-group">
                                     <label for="role">role</label>

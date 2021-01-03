@@ -74,7 +74,8 @@
                                                     <img width="100" src="imagesback/avatar.png" class="img-responsive" alt="">
                                                 </td>
                                                 <td class="table-img">
-                                                    <img width="100" src="../front/images/<?PHP echo $commentaire['urlImage']; ?> "> </td>
+                                                    <img width="100" src="../front/images/<?PHP echo $commentaire['urlImage']; ?> ">
+                                                </td>
 
                                                 <td>
                                                     <p><?php echo $commentaire['titre']; ?></p>
@@ -103,7 +104,12 @@
 
                                     </tbody>
                                 </table>
+                                <center>
+                                    <a href="index.php" class="btn btn-primary"> retour</a>
+                                    <a href="statistiquescomments.php" class="btn btn-primary"> Statistiques des Commentaires</a>
 
+
+                                </center>
                             </div>
 
 
