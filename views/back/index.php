@@ -1,3 +1,17 @@
+
+
+
+<?php  session_start(); ?>
+ <?php if (empty($_SESSION['Login']))
+ {
+	 echo "<script type='text/javascript'>";
+echo "alert('Please Login First');
+window.location.href='login.php';";
+echo "</script>";
+
+ }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -392,7 +406,8 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    
+                    <li ><a href="../../controller/logout.php" > <span class="btn btn-primary" >Logout </span></a></li>
                 </div>
             </div>
         </div>
