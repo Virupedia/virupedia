@@ -28,7 +28,7 @@ $r = 2;
 
 $articleC = new articleC();
 $idarticle = $_GET['idNewsArticle'];
-$idUsers = 1;
+$idUsers = $_SESSION['idUsers'];
 
 
 

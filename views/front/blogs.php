@@ -1,3 +1,15 @@
+<?php session_start(); ?>
+<?php if (empty($_SESSION['Login'])) {
+    echo "<script type='text/javascript'>";
+    echo "alert('Please Login First');
+window.location.href='loginversion1.php';";
+    echo "</script>";
+}
+?>
+
+
+
+
 <?php
 $x = null;
 if (!isset($_COOKIE['showstuff'])) {
